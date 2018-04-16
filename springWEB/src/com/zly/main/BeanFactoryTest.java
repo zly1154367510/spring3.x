@@ -1,6 +1,7 @@
-package com.zly.beanfactory;
+package com.zly.main;
 
 import com.zly.daomain.Car;
+import com.zly.daomain.MyBeanPost;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.Resource;
@@ -16,7 +17,7 @@ public class BeanFactoryTest {
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         Resource res = resolver.getResource("classpath:com/zly/beanfactory/beans.xml");
         BeanFactory bf = new XmlBeanFactory(res);
-        Car car = bf.getBean("car",Car.class);
+        MyBeanPost car = bf.getBean("myBeanPost",MyBeanPost.class);
 
     }
 }

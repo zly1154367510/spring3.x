@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+xmlns 命名空间
+
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="car1" class="com.zly.daomain.Car" factory-bean="carFactory" factory-method="createCar" init-method="myInit"/>
+
+    <!--Car工厂类-->
+    <bean id="carFactory" class="com.zly.beanfactory.CarFactory"/>
+
+    <!--注册工厂后处理器-->
+    <bean id="myBeanPost" class="com.zly.daomain.MyBeanPost"/>
+
+    <!--构造方法注入-->
+    <bean id="boss" class="com.zly.daomain.Boss">
+        <constructor-arg index="0" value="辛基"/>
+        <constructor-arg index="1" >
+            <ref bean="location"></ref>
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="car1"></ref>
+        </constructor-arg>
+        <property name="office">
+            <bean class="com.zly.daomain.Office">
+                <property name="name" value="李书福"></property>
+            </bean>
+        </property>
+        <property name="favorList">
+            <list>
+                <value>羽毛球</value>
+                <value>篮球</value>
+            </list>
+        </property>
+        <property name="deposit">
+            <map>
+                <entry>
+                    <key><value>建设银行</value></key>
+                    <value>20000</value>
+                </entry>
+                <entry>
+                    <key><value>招商银行</value></key>
+                    <value>5000000</value>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+
+    <bean id="location" class="com.zly.daomain.Location">
+        <property name="name" value="广州"></property>
+        <property name="x" value="100"></property>
+        <property name="y" value="100"></property>
+    </bean>
+
+    <!-- 注册bean后处理器-->
+    <bean id="MyBeanFactoryPostProcesser" class="com.zly.main.MyBeanFactoryPostProcesser"></bean>
+</beans>
