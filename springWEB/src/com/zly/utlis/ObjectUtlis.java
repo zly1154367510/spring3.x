@@ -1,5 +1,7 @@
 package com.zly.utlis;
 
+import com.zly.daomain.Car;
+
 import java.lang.reflect.Field;
 
 /**
@@ -14,7 +16,11 @@ public class ObjectUtlis {
             Field f = fields[i];
             f.setAccessible(true);
             try {
-                System.out.println(f.getName()+":"+f.get(o));
+                if (f.getName().equals("car")){
+                    browsePropety(f.get(o));
+                }else {
+                    System.out.println(f.getName() + ":" + f.get(o));
+                }
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }

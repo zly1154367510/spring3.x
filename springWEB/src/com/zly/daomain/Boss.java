@@ -1,5 +1,10 @@
 package com.zly.daomain;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +15,8 @@ import java.util.Map;
  * 构造方法注入
  * Created by zly11 on 2018/4/16.
  */
+
+
 public class Boss {
 
     private Location location;
@@ -65,9 +72,8 @@ public class Boss {
         return car;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
-    }
+
+
 
     public Office getOffice() {
         return office;

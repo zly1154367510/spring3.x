@@ -10,11 +10,11 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 /**
  * Created by zly11 on 2018/4/16.
  */
-public class MyBeanFactoryPostProcesser implements BeanFactoryPostProcessor {
+public class MyBeanFactoryPostProcesser  {
 
-    @Override
-    public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
-        BeanDefinition bd = configurableListableBeanFactory.getBeanDefinition("car1");
-        //bd.getPropertyValues().addPropertyValue("brand","奇瑞");
-    }
+//    @Override
+//    public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
+//        BeanDefinition bd = configurableListableBeanFactory.getBeanDefinition("car1");
+//        //bd.getPropertyValues().addPropertyValue("brand","奇瑞");
+//    }
 }

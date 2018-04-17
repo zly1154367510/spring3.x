@@ -5,13 +5,31 @@ xmlns 命名空间
 
 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="car1" class="com.zly.daomain.Car" factory-bean="carFactory" factory-method="createCar" init-method="myInit"/>
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+        http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-3.0.xsd"
 
-    <!--Car工厂类-->
-    <bean id="carFactory" class="com.zly.beanfactory.CarFactory"/>
-
+    >
+    <!--&lt;!&ndash;设置car的父类&ndash;&gt;-->
+    <!--<bean id="car1" class="com.zly.daomain.Car" factory-bean="carFactory" factory-method="createCar" init-method="myInit" scope="prototype"-->
+    <!--p:brand="benz" name="s600" p:maxSpeed="300" abstract="true"></bean>-->
+    <!--&lt;!&ndash;设置car的子类&ndash;&gt;-->
+    <!--<bean id="car2" parent="car1" p:color="red"></bean>-->
+    <!--<bean id="car3" parent="car1" p:color="blue"></bean>-->
+    <!--&lt;!&ndash;Car工厂类&ndash;&gt;-->
+    <!--<bean id="carFactory" class="com.zly.beanfactory.CarFactory"/>-->
+    <bean id="car" class="com.zly.beanfactory.CarBeanFactory"
+          p:carInfo="Benz，200，灰色" >
+        <!--创建代理-->
+        <aop:scoped-proxy/>
+    </bean>
     <!--注册工厂后处理器-->
     <bean id="myBeanPost" class="com.zly.daomain.MyBeanPost"/>
 
@@ -21,8 +39,8 @@ xmlns 命名空间
         <constructor-arg index="1" >
             <ref bean="location"></ref>
         </constructor-arg>
-        <constructor-arg>
-            <ref bean="car1"></ref>
+        <constructor-arg index="2">
+            <ref bean="car"></ref>
         </constructor-arg>
         <property name="office">
             <bean class="com.zly.daomain.Office">
@@ -58,4 +76,22 @@ xmlns 命名空间
 
     <!-- 注册bean后处理器-->
     <bean id="MyBeanFactoryPostProcesser" class="com.zly.main.MyBeanFactoryPostProcesser"></bean>
+
+    <!--util 注册集合类bean-->
+    <util:map id="testMap">
+        <entry key="name" value="辛基"></entry>
+        <entry key="car" value="Benz"></entry>
+    </util:map>
+
+
+
+    <context:component-scan base-package="com.zly.service">
+
+    </context:component-scan>
+    <context:component-scan base-package="com.zly.daomain">
+
+    </context:component-scan>
+    <context:component-scan base-package="com.zly.conf">
+
+    </context:component-scan>
 </beans>
