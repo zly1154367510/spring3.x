@@ -8,6 +8,6 @@ import com.zly.pojo.TokenModel;
 public interface TokenService {
 
     public String createToken(String username);
-    public boolean selectToken(String username,String token);
+    public String selectToken(String username,String token);
     public void deleteToken(String username);
 }
