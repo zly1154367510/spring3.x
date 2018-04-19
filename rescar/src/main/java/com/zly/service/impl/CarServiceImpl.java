@@ -22,4 +22,8 @@ public class CarServiceImpl implements CarService {
         return carMapper.findAllCar(page);
     }
 
+    @Override
+    public int getCarConut() {
+        return carMapper.getCarPage();
+    }
 }

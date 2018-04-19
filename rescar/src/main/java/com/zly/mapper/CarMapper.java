@@ -13,6 +13,9 @@ public interface CarMapper extends MyMapper<Car> {
     @SelectProvider(type = carSqlBulid.class,method = "findAllCarByPage")
     public List<Car> findAllCar(Integer page);
 
+    @Select("select count(*) from car")
+    public Integer getCarPage();
+
     class carSqlBulid{
 
         public String findAllCarByPage(Integer page){
@@ -21,9 +24,9 @@ public interface CarMapper extends MyMapper<Car> {
             if (page<0){
                 sql += "limit 0 ,20";
             }else{
-                Integer endPages = page*20;
+                Integer pagesNum = 20;
                 Integer staterPages = (page-1)*20;
-                sql += " limit "+staterPages+","+endPages;
+                sql += " limit "+staterPages+","+pagesNum;
             }
             return sql;
         }

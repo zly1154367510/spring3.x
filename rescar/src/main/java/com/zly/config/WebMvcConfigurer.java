@@ -2,6 +2,7 @@ package com.zly.config;
 
 
 import com.zly.controller.interceptor.OneInterceptor;
+import com.zly.controller.interceptor.RequestInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -17,10 +18,15 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
     public OneInterceptor getOnInterceptor(){
         return new OneInterceptor();
     }
+    @Bean
+    public RequestInterceptor getRequestInterceptor(){
+        return new RequestInterceptor();
+    }
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         super.addInterceptors(registry);
         registry.addInterceptor(getOnInterceptor()).addPathPatterns("/api/mi/*");
+        registry.addInterceptor(getRequestInterceptor()).addPathPatterns("/**/*");
 
     }
 }

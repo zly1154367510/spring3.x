@@ -24,8 +24,15 @@ public class CarController {
 
     @GetMapping(value = "car/getCarList/{page}")
     public JsonResult findAllCar(HttpServletResponse response, @PathVariable Integer page) {
-        response.addHeader("Access-Control-Allow-Origin", "*");
+       // response.addHeader("Access-Control-Allow-Origin", "*");
         return JsonResult.ok(carService.findAllCar(page));
+    }
+
+    @GetMapping(value = "car/getCarCount")
+    public JsonResult getCarCount(HttpServletResponse response){
+      //  response.addHeader("Access-Control-Allow-Origin","*");
+        return JsonResult.ok(carService.getCarConut());
+
     }
 
     //@GetMapping(value="car/getCarList/{}")

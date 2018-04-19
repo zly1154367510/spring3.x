@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import sun.org.mozilla.javascript.internal.Token;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 
@@ -33,8 +34,9 @@ public class UserController {
     @Autowired
     private TokenService tokenService;
 
-    @PostMapping("login/loginUser")
-    public JsonResult login(@RequestBody String userMassage){
+    @RequestMapping("login/loginUser")
+    public JsonResult login(@RequestBody String userMassage, HttpServletResponse response){
+
         JSONObject jsonObject = JSONObject.fromObject(userMassage);
         String username = jsonObject.getString("username");
         String password = jsonObject.getString("password");
