@@ -4,7 +4,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 public class User {
-    User(){}
+    public User(){}
 
     @Id
     private Integer id;

@@ -6,11 +6,11 @@ package com.zly.pojo;
 public class TokenModel {
 
     private String username;
-    private String uuid;
+    private String token;
 
-    public TokenModel(String username,String uuid){
+    public TokenModel(String username,String token){
         this.username = username;
-        this.uuid = uuid;
+        this.token = token;
     }
 
     public String getUsername() {
@@ -22,10 +22,10 @@ public class TokenModel {
     }
 
     public String getUuid() {
-        return uuid;
+        return token;
     }
 
     public void setUuid(String uuid) {
-        this.uuid = uuid;
+        this.token = uuid;
     }
 }

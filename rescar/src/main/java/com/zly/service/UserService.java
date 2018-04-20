@@ -13,4 +13,5 @@ public interface UserService {
 
     User loginUser(String username,String password);
     List<User> findAllUser();
+    User register(User user);
 }

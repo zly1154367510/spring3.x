@@ -5,6 +5,7 @@ import com.zly.pojo.TokenModel;
 import com.zly.pojo.User;
 import com.zly.service.TokenService;
 import com.zly.service.UserService;
+import com.zly.utils.DaomainUtils;
 import com.zly.utils.JsonResult;
 import net.sf.json.JSON;
 import net.sf.json.JSONObject;
@@ -35,7 +36,7 @@ public class UserController {
     private TokenService tokenService;
 
     @RequestMapping("login/loginUser")
-    public JsonResult login(@RequestBody String userMassage, HttpServletResponse response){
+    public JsonResult login(@RequestBody String userMassage){
 
         JSONObject jsonObject = JSONObject.fromObject(userMassage);
         String username = jsonObject.getString("username");
@@ -47,6 +48,13 @@ public class UserController {
             return JsonResult.exitUser();
         }
 
+    }
+    @PostMapping("register/userRegister")
+    public JsonResult register(@RequestBody String registerMassage){
+        JSONObject jsonObject = JSONObject.fromObject(registerMassage);
+        User user1 = new User();
+        User user = (User)DaomainUtils.JsonToDaomain(user1,jsonObject);
+        return JsonResult.ok( userService.register(user));
     }
 
     //@PreAuthorize()

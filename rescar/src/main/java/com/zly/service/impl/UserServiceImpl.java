@@ -31,4 +31,8 @@ public class UserServiceImpl implements UserService {
         return userMapper.findAllUser();
     }
 
+    @Override
+    public User register(User user) {
+        return userMapper.register(user);
+    }
 }
