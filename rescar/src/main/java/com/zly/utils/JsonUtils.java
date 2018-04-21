@@ -76,14 +76,15 @@ public class JsonUtils {
                 json.append(line);
             }
             System.out.print(json);
-            String j = json.toString().replace("\t","");
-            String j3 = j.replace(" ","");
-            String j2 = j.replace('\"','"');
-            JSONObject jsonObject = JSONObject.fromObject(j2);
-            System.out.println("------------------------");
-            System.out.println(jsonObject);
-            System.out.println("------------------------");
-            return jsonObject.getString(key);
+//            String j = json.toString().replace("\t","");
+//            String j3 = j.replace(" ","");
+//            String j2 = j.replace('\"','"');
+//            JSONObject jsonObject = JSONObject.fromObject(j2);
+//            System.out.println("------------------------");
+//            System.out.println(jsonObject);
+//            System.out.println("------------------------");
+//            return jsonObject.getString(key);
+            return null;
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -110,5 +111,18 @@ public class JsonUtils {
     	
     	return null;
     }
-    
+    public static String readJSONString(HttpServletRequest request){
+        StringBuffer json = new StringBuffer();
+        String line = null;
+        try {
+            BufferedReader reader = request.getReader();
+            while((line = reader.readLine()) != null) {
+                json.append(line);
+            }
+        }
+        catch(Exception e) {
+            System.out.println(e.toString());
+        }
+        return json.toString();
+    }
 }

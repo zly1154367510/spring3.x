@@ -76,6 +76,10 @@ public class JsonResult {
         return new JsonResult(555, msg, null);
     }
 
+    public static JsonResult authCodeError(){
+        return new JsonResult(401,"验证码错误",null);
+    }
+
     public JsonResult() {
 
     }

@@ -26,17 +26,29 @@ public class TokenServiceImpl implements TokenService {
     private RedisTemplate<String,String> redisTemplate;
 
 
+    @Override
+    public String selectAuthCode(String uuid) {
+        String token1 = redisTemplate.opsForValue().get(uuid);
+        return token1;
+    }
+
+    @Override
+    public String createAuthCode(String authCode) {
+        String uuid = UUID.randomUUID().toString().replace("-","");
+        redisTemplate.opsForValue().set(uuid,authCode,10,TimeUnit.MINUTES);
+        return uuid;
+    }
 
     @Override
     public String createToken(String username) {
 
         String uuid = UUID.randomUUID().toString().replace("-","");
-        redisTemplate.opsForValue().set(username,uuid,1,TimeUnit.MINUTES);
+        redisTemplate.opsForValue().set(username,uuid,20,TimeUnit.MINUTES);
         return uuid;
     }
 
     @Override
-    public String selectToken(String username,String token) {
+    public String selectToken(String username) {
         String token1 = redisTemplate.opsForValue().get(username);
         return token1;
     }

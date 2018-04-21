@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 /**
  * Created by zly11 on 2018/4/2.
@@ -36,10 +37,11 @@ public class OneInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-
-        String username = httpServletRequest.getHeader("username");
-        String token = httpServletRequest.getHeader("token");
-        String token1 = tokenService.selectToken(username,token);
+        System.out.println("经过密码验证");
+        String username = httpServletRequest.getParameter("username");
+//        String username =   httpServletRequest.getHeader("username");;
+        String token = httpServletRequest.getParameter("token");
+        String token1 = tokenService.selectToken(username);
         if(!token.equals(token1)||token == null){
             httpServletResponse.setCharacterEncoding("UTF-8");
             httpServletResponse.setContentType("application/json; charset=utf-8");

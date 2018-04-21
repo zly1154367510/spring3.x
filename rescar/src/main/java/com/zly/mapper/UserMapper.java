@@ -19,7 +19,6 @@ public interface UserMapper extends MyMapper<User> {
 
     @SelectProvider(type=UserSqlBulid.class,method = "registerUser")
     public User register(User user);
-
     class UserSqlBulid{
         public String findUserByUsernamePssword(Map<String,String>map){
             String sql = "select * from user";
