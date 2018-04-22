@@ -7,18 +7,10 @@
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="car_id" jdbcType="INTEGER" property="carId" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="is_pay" jdbcType="CHAR" property="isPay" />
     <result column="create_time" jdbcType="DATE" property="createTime" />
   </resultMap>
-  <resultMap id="BaseResultMap" type="com.zly.pojo.ShappingCar">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="car_Id" jdbcType="INTEGER" property="carId" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="is_pay" jdbcType="CHAR" property="isPay" />
-    <result column="create_time" jdbcType="DATE" property="createTime" />
-  </resultMap>
+
+
 </mapper>

@@ -19,7 +19,7 @@ public class RequestInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
-        System.out.println("ss");
+        System.out.println("经过跨域请求头");
         response.setHeader("Access-Control-Allow-Origin",request.getHeader("origin"));
         response.setHeader("Access-Control-Allow-Origin","*");
         response.setHeader("Access-Control-Allow-Methods", "POST,GET, OPTIONS, DELETE");
@@ -27,7 +27,7 @@ public class RequestInterceptor implements HandlerInterceptor {
         response.setHeader("Access-Control-Allow-Headers","x-requested-with,Cache-Control,Pragma,Content-Type,Token");
         response.setHeader("Access-Control-Allow-Credentials","true");
         String method= request.getMethod();
-        System.out.println(method);
+
         if (method.equals("OPTIONS")){
             response.setStatus(200);
             return true;

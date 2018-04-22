@@ -42,19 +42,22 @@ public class OneInterceptor implements HandlerInterceptor {
 //        String username =   httpServletRequest.getHeader("username");;
         String token = httpServletRequest.getParameter("token");
         String token1 = tokenService.selectToken(username);
-        if(!token.equals(token1)||token == null){
+        if (!token.equals(token1) || token == null) {
+            System.out.println("未登录");
             httpServletResponse.setCharacterEncoding("UTF-8");
             httpServletResponse.setContentType("application/json; charset=utf-8");
-            PrintWriter out = null ;
-            try{
+            PrintWriter out = null;
+            try {
                 JSONObject jsonObject = JSONObject.fromObject(JsonResult.noLogin());
                 out = httpServletResponse.getWriter();
                 out.write(jsonObject.toString());
                 return false;
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
+        }else{
+            return true;
         }
-        return true;
+        return false;
     }
 }

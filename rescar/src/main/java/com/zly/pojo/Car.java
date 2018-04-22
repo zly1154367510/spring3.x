@@ -10,6 +10,9 @@ public class Car {
 
     private String name;
 
+    @Column(name = "is_sold_out")
+    private String isSoldOut;
+
     @Column(name = "p_year")
     private String pYear;
 
@@ -133,5 +136,13 @@ public class Car {
      */
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getIsSoldOut() {
+        return isSoldOut;
+    }
+
+    public void setIsSoldOut(String isSoldOut) {
+        this.isSoldOut = isSoldOut;
     }
 }

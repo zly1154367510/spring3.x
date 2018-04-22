@@ -150,9 +150,9 @@ public class UserController {
         return JsonResult.ok(userService.findAllUser());
     }
 
-    @GetMapping("api/mi/logOut")
-    public JsonResult loginOut(@RequestHeader Map<String,String> map){
-        String username = map.get("username");
+    @PostMapping("mi/logOut")
+    public JsonResult loginOut(HttpServletRequest request){
+        String username = request.getParameter("username");
         tokenService.deleteToken(username);
         return JsonResult.ok("注销成功");
     }

@@ -8,20 +8,26 @@ public class ShappingCar {
     @Id
     private Integer id;
 
-//    @Column(name = "car_Id")
-//    private Integer carId;
-    private Car car;
+    @Column(name = "car_id")
+    private Integer carId;
 
-//    @Column(name = "user_id")
-//    private Integer userId;
-
-    private User user;
+    private String username;
 
     @Column(name = "is_pay")
     private String isPay;
 
     @Column(name = "create_time")
     private Date createTime;
+
+    private Car car;
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
 
     /**
      * @return id
@@ -38,9 +44,32 @@ public class ShappingCar {
     }
 
     /**
-     * @return car_Id
+     * @return car_id
      */
+    public Integer getCarId() {
+        return carId;
+    }
 
+    /**
+     * @param carId
+     */
+    public void setCarId(Integer carId) {
+        this.carId = carId;
+    }
+
+    /**
+     * @return username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     /**
      * @return is_pay
@@ -68,21 +97,5 @@ public class ShappingCar {
      */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
-    }
-
-    public Car getCar() {
-        return car;
-    }
-
-    public void setCar(Car car) {
-        this.car = car;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }
