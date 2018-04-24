@@ -33,10 +33,10 @@ public class TokenServiceImpl implements TokenService {
     }
 
     @Override
-    public String createAuthCode(String authCode) {
-        String uuid = UUID.randomUUID().toString().replace("-","");
-        redisTemplate.opsForValue().set(uuid,authCode,10,TimeUnit.MINUTES);
-        return uuid;
+    public String createAuthCode(String authCodeKey,String authCode) {
+
+        redisTemplate.opsForValue().set(authCodeKey,authCode,1,TimeUnit.MINUTES);
+        return null;
     }
 
     @Override

@@ -45,15 +45,21 @@ public class ShappingCarController {
         return JsonResult.ok(list);
     }
 
-    @RequestMapping("mi/delShappingCar")
-    public JsonResult delShappingCar(HttpServletRequest request){
+    @RequestMapping("mi/goPay")
+    public JsonResult goPay(HttpServletRequest request){
         String sId = request.getParameter("sId");
         String cId = request.getParameter("cId");
-        System.out.println(sId);
-        System.out.println(cId);
         shappingService.payShappingCar(Integer.valueOf(sId),Integer.valueOf(cId));
         return JsonResult.ok();
 
+    }
+
+    @RequestMapping("mi/delShappingCar")
+    public JsonResult delShappingCar(HttpServletRequest request){
+        String sId = request.getParameter("sId");
+        //System.out.println("request数据:"+sId);
+        shappingService.delShappingCar(Integer.valueOf(sId));
+        return JsonResult.ok();
     }
 
 }

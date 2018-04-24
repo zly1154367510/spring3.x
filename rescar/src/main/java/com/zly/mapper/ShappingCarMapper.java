@@ -32,7 +32,9 @@ public interface ShappingCarMapper extends MyMapper<ShappingCar> {
     })
     public List<ShappingCar> findShappingCarByUsername(String username);
 
-    @Delete("delete shapping_car where id=#{id}")
+
+
+    @Delete("delete from shapping_car where id=#{id}")
     public void deleteShappingCarById(Integer id);
 
     @Update("update shapping_car set is_pay='1' where id=#{id}")

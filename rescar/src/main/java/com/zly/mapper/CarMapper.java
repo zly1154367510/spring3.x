@@ -10,13 +10,42 @@ import java.util.List;
 public interface CarMapper extends MyMapper<Car> {
 
     @SelectProvider(type = carSqlBulid.class,method = "findAllCarByPage")
+    @Results({
+            @Result(
+                    property = "carImages",
+                    column = "title_images_url",
+                    one = @One(select = "com.zly.mapper.CarImagesMapper.findCarImagesById")
+            ),
+            @Result(
+                property = "store",
+                    column = "s_id",
+                    one = @One(select = "com.zly.mapper.StoreMapper.findStoreById")
+            )
+    })
     public List<Car> findAllCar(Integer page);
+
+
+    @Select("select id,brand,name,p_year as pYear,mileage,s_id,price,title_images_url from car where id = #{id}")
+    @Results({
+            @Result(
+                    property = "carImages",
+                    column = "title_images_url",
+                    one = @One(select = "com.zly.mapper.CarImagesMapper.findCarImagesById")
+            ),
+            @Result(
+                    property = "store",
+                    column = "s_id",
+                    one = @One(select = "com.zly.mapper.StoreMapper.findStoreById")
+            )
+    })
+    public Car findCarById(Integer id);
+//    @Select("select * from car where is_sold_out=0")
 
     @Select("select count(*) from car where is_sold_out='0'")
     public Integer getCarPage();
 
-    @SelectProvider(type = carSqlBulid.class,method = "findCarById")
-    public Car findCarById(@Param(value = "id") Integer id);
+//    @SelectProvider(type = carSqlBulid.class,method = "findCarById")
+//    public Car findCarById(@Param(value = "id") Integer id);
 
     @Delete("delete from car where id=#{id}")
     public void delCarById(Integer id);

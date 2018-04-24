@@ -26,6 +26,28 @@ public class Car {
 
     private String price;
 
+    @Column(name="title_images_url")
+    private CarImages carImages;
+
+    @Column(name="s_id")
+    private Store store;
+
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
+
+    public CarImages getCarImages() {
+        return carImages;
+    }
+
+    public void setCarImages(CarImages carImages) {
+        this.carImages = carImages;
+    }
+
     /**
      * @return id
      */

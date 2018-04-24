@@ -40,17 +40,19 @@ public class ShappingCarImal implements ShappingService {
 
     @Override
     public List<ShappingCar> findAllShappingCarByUsername(String username) {
-        System.out.println("个体");
+     //   System.out.println("个体");
         return shappingCarMapper.findShappingCarByUsername(username);
     }
 
     @Transactional(propagation=Propagation.REQUIRED)
     public void payShappingCar(Integer sId, Integer cId) {
-        System.out.println("事务");
+       // System.out.println("事务");
         shappingCarMapper.updIsPay(sId);
         carMapper.updCarIsSoldOut(cId);
     }
 
-
-
+    @Override
+    public void delShappingCar(Integer sId) {
+        shappingCarMapper.deleteShappingCarById(sId);
+    }
 }

@@ -7,9 +7,11 @@ import com.zly.utils.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.websocket.server.PathParam;
 
@@ -35,5 +37,11 @@ public class CarController {
 
     }
 
+    @RequestMapping("car/getCarDatelis")
+    public JsonResult getCarDatelis(HttpServletRequest request){
+        Integer carId = Integer.valueOf(request.getParameter("carId"));
+        System.out.println(carId);
+        return JsonResult.ok(carService.findCarById(carId));
+    }
     //@GetMapping(value="car/getCarList/{}")
 }

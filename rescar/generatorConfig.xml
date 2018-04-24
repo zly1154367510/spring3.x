@@ -29,7 +29,7 @@
                              type="XMLMAPPER"/>
 
 
-		<table tableName="shapping_car"></table>
+		<table tableName="store"></table>
 		 
     </context>
 </generatorConfiguration>

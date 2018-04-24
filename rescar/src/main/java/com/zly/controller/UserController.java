@@ -1,7 +1,11 @@
 package com.zly.controller;
 
+import cn.apiclub.captcha.Captcha;
+import cn.apiclub.captcha.backgrounds.GradiatedBackgroundProducer;
+import cn.apiclub.captcha.gimpy.FishEyeGimpyRenderer;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.zly.mapper.UserMapper;
+import com.zly.pojo.AuthCode;
 import com.zly.pojo.TokenModel;
 import com.zly.pojo.User;
 import com.zly.service.TokenService;
@@ -15,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.session.Session;
 import org.springframework.web.bind.annotation.*;
 import sun.org.mozilla.javascript.internal.Token;
 
@@ -39,6 +44,9 @@ import java.util.UUID;
 @RestController
 public class UserController {
 
+    private static int captchaExpires = 3*60; //超时时间3min
+    private static int captchaW = 200;
+    private static int captchaH = 60;
     private static Logger log = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
@@ -48,20 +56,21 @@ public class UserController {
     private TokenService tokenService;
 
 
+
     //生成二维码
     @Autowired
     private DefaultKaptcha defaultKaptcha;
 
     @RequestMapping("login/loginUser")
-    public JsonResult login(@RequestBody String userMassage, HttpSession session){
+    public JsonResult login(@RequestBody String userMassage,HttpServletRequest request){
+        Cookie[] cookies = request.getCookies();
 
         JSONObject jsonObject = JSONObject.fromObject(userMassage);
         String username = jsonObject.getString("username");
         String password = jsonObject.getString("password");
-        String authCode = jsonObject.getString("authCode");
-        String sessionAuthCode = (String)session.getAttribute("authCode");
-        System.out.println(session.getId());
-//        if ( sessionAuthCode == null|| sessionAuthCode.equals(authCode)){
+        //String authCode = jsonObject.getString("authCode");
+
+// if ( sessionAuthCode == null|| sessionAuthCode.equals(authCode)){
 //            return JsonResult.authCodeError();
 //        }
         if (userService.loginUser(username,password)!=null){
@@ -74,48 +83,26 @@ public class UserController {
     }
 
     @RequestMapping("check/authCode")
-    private JsonResult getAutoCode(HttpSession session,HttpServletResponse httpServletResponse){
-        byte[] captchaChallengeAsJpeg = null;
-        ByteArrayOutputStream jpegOutputStream = new ByteArrayOutputStream();
+    private  @ResponseBody byte[] getAutoCode( HttpServletRequest request, HttpServletResponse response){
+
+        String uuid = UUID.randomUUID().toString();
+        Captcha captcha = new Captcha.Builder(captchaW, captchaH)
+                .addText().addBackground(new GradiatedBackgroundProducer())
+                .gimp(new FishEyeGimpyRenderer())
+                .build();
+
+        //tokenService.createAuthCode(uuid,captcha.getAnswer());
+
+
+        ByteArrayOutputStream bao = new ByteArrayOutputStream();
         try {
-            //生产验证码字符串并保存到session中
-            String createText = defaultKaptcha.createText();
-            System.out.println(createText);
-          //  String autoCodeKey = tokenService.createAuthCode(createText);
-            PrintWriter out = null ;
-//            try{
-//                JSONObject jsonObject = JSONObject.fromObject(JsonResult.ok(createText));
-//                out = httpServletResponse.getWriter();
-//                out.write(jsonObject.toString());
-//                out.close();
-//            }catch (Exception e){
-//                e.printStackTrace();
-//            }
-           // httpServletResponse.addCookie(new Cookie("authCodeKey",autoCodeKey));
-            //System.out.println(session.getId());
-            // session.setAttribute("authCode", createText);
-            //使用生产的验证码字符串返回一个BufferedImage对象并转为byte写入到byte数组中
-            BufferedImage challenge = defaultKaptcha.createImage(createText);
-            ImageIO.write(challenge, "jpg", jpegOutputStream);
-            //定义response输出类型为image/jpeg类型，使用response输出流输出图片的byte数组
-            captchaChallengeAsJpeg = jpegOutputStream.toByteArray();
-            httpServletResponse.setHeader("Cache-Control", "no-store");
-            httpServletResponse.setHeader("Pragma", "no-cache");
-            httpServletResponse.setDateHeader("Expires", 0);
-            httpServletResponse.setContentType("image/jpeg");
-            ServletOutputStream responseOutputStream =
-                    httpServletResponse.getOutputStream();
-            responseOutputStream.write(captchaChallengeAsJpeg);
-            responseOutputStream.flush();
-            responseOutputStream.close();
-            return JsonResult.ok(createText);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            ImageIO.write(captcha.getImage(), "png", bao);
+
+            return bao.toByteArray();
         }catch (IOException e){
-            e.printStackTrace();
+            return null;
         }
 
-        return JsonResult.ok("ss");
     }
 
     /**

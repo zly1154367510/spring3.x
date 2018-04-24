@@ -12,4 +12,6 @@ public interface CarService {
     List<Car> findAllCar(Integer page);
 
     int getCarConut();
+
+    Car findCarById(Integer id);
 }

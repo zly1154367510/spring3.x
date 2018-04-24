@@ -1,5 +1,8 @@
 package com.zly.utils;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.xml.ws.Action;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
@@ -11,6 +14,9 @@ import java.util.Random;
  */
 public class AuthCodeUtils {
 
+
+    @Autowired
+    private
     static Map<String, Object> codeMap;
 
     //2.创建char数组保存验证码出现字符

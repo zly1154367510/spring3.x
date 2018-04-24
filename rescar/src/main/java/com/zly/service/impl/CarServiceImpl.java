@@ -26,4 +26,9 @@ public class CarServiceImpl implements CarService {
     public int getCarConut() {
         return carMapper.getCarPage();
     }
+
+    @Override
+    public Car findCarById(Integer id) {
+        return carMapper.findCarById(id);
+    }
 }

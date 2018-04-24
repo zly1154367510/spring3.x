@@ -19,4 +19,6 @@ public interface ShappingService {
 
 
     public void payShappingCar(Integer sId,Integer cId);
+
+    public void delShappingCar(Integer sId);
 }
