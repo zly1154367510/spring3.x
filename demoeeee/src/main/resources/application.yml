@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/security_test
+    username: root
+    password:
+  session:
+    store-type: none
+  jap:
+    hibernate:
+      ddl-auto: update
+    show_sql: true
+server:
+  port: 8082
+

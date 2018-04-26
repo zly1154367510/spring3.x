@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+    <h2>登录</h2>
+    <p th:text="${param.error}"></p>
+    <p th:if="${param.logout}">已退出登录</p>
+    <p th:if="${param.error}">有错误请重试</p>
+    <form   th:action="@{/login}" method="POST">
+        username:<input type="text" name="username"/>
+        password:<input type="password" name="password"/>
+        <input type="submit" value="登录"/>
+    </form>
+
+</body>
+</html>
