@@ -75,6 +75,7 @@ public class ProductController {
         product.setCategory(category);
         if (bindingResult.hasErrors()){
             FieldError fieldError = bindingResult.getFieldError();
+
             logger.info("code:"+fieldError.getField()
                         + ",field:"+fieldError.getField()
             );

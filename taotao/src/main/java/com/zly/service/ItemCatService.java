@@ -10,4 +10,5 @@ import java.util.List;
 public interface ItemCatService {
 
     List<ItemCat> getItemCatParen();
+    List<String> getItemCatName();
 }

@@ -8,6 +8,7 @@ import com.zly.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,5 +29,12 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public long getItemNum() {
         return itemMapper.selectItemNum();
+    }
+
+    @Override
+    public boolean addItem(Item item) {
+        item.setCreated(new Date());
+        itemMapper.addItem(item);
+        return false;
     }
 }

@@ -40,4 +40,9 @@ public class ItemCatServiceImpl implements ItemCatService {
         }
         return list;
     }
+
+    @Override
+    public List<String> getItemCatName() {
+        return itemCatMapper.selectItemCatName();
+    }
 }

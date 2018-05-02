@@ -5,7 +5,10 @@
   Time: 11:41
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,10 +27,7 @@
     <!-- Import google fonts - Heading first/ text second -->
     <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:400,700|Droid+Sans:400,700' />
     <!--[if lt IE 9]>
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" type="text/css" />
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css" />
-    <link href="http://fonts.googleapis.com/css?family=Droid+Sans:400" rel="stylesheet" type="text/css" />
-    <link href="http://fonts.googleapis.com/css?family=Droid+Sans:700" rel="stylesheet" type="text/css" />
+
     <![endif]-->
     <!-- Css files -->
     <!-- Icons -->
@@ -42,11 +42,7 @@
     <link href="static/css/main.css" rel="stylesheet" />
     <!-- Custom stylesheets ( Put your own changes here ) -->
     <link href="static/css/custom.css" rel="stylesheet" />
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/img/ico/apple-touch-icon-57-precomposed.png">
+
     <link rel="icon" href="/img/ico/favicon.ico" type="image/png">
     <!-- Windows8 touch icon ( http://www.buildmypinnedsite.com/ )-->
     <meta name="msapplication-TileColor" content="#3399cc" />
@@ -136,9 +132,9 @@
                     </button>
                 </form>
             </li>
-            <li><a href="http://localhost:8089/index/{1}">手机列表 <i class="im-screen"></i></a>
+            <li><a href="http://localhost:8089/item?page=1">手机列表 <i class="im-screen"></i></a>
             </li>
-            <li><a href="charts.html">Charts <i class="st-chart"></i></a>
+            <li><a href="http://localhost:8089/additem">添加商品 <i class="st-chart"></i></a>
             </li>
             <li>
                 <a href="#"> Forms <i class="im-paragraph-justify"></i></a>
@@ -209,82 +205,12 @@
                     </li>
                 </ul>
             </li>
-            <li><a href="#">Pages <i class="st-files"></i></a>
-                <ul class="nav sub">
-                    <li><a href="invoice.html"><i class="st-file"></i> Invoice</a>
-                    </li>
-                    <li><a href="profile.html"><i class="ec-user"></i> Profile page</a>
-                    </li>
-                    <li><a href="search.html"><i class="ec-search"></i> Search page</a>
-                    </li>
-                    <li><a href="blank.html"><i class="im-file4"></i> Blank page</a>
-                    </li>
-                    <li><a href="login.html"><i class="ec-locked"></i> Login page</a>
-                    </li>
-                    <li><a href="lockscreen.html"><i class="ec-locked"></i> Lock screen</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="st-files"></i> Error pages</a>
-                        <ul class="nav sub">
-                            <li><a href="400.html"><i class="st-file-broken"></i> Error 400</a>
-                            </li>
-                            <li><a href="401.html"><i class="st-file-broken"></i> Error 401</a>
-                            </li>
-                            <li><a href="403.html"><i class="st-file-broken"></i> Error 403</a>
-                            </li>
-                            <li><a href="404.html"><i class="st-file-broken"></i> Error 404</a>
-                            </li>
-                            <li><a href="405.html"><i class="st-file-broken"></i> Error 405</a>
-                            </li>
-                            <li><a href="500.html"><i class="st-file-broken"></i> Error 500</a>
-                            </li>
-                            <li><a href="503.html"><i class="st-file-broken"></i> Error 503</a>
-                            </li>
-                            <li><a href="offline.html"><i class="st-window"></i> Offline</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Bonus <i class="im-gift"></i></a>
-                <ul class="nav sub">
-                    <li><a href="landing.html"><i class="im-airplane"></i> Landing page</a>
-                    </li>
-                </ul>
-            </li>
+
+
         </ul>
         <!-- End #sideNav -->
         <!-- Start .sidebar-panel -->
-        <div class="sidebar-panel">
-            <h4 class="sidebar-panel-title"><i class="im-fire"></i> Server usage</h4>
-            <div class="sidebar-panel-content">
-                <ul class="server-stats">
-                    <li>
-                        <span class="txt">Disk space</span>
-                        <span class="percent">78</span>
-                        <div id="usage-sparkline" class="sparkline">Loading...</div>
-                        <div class="pie-chart" data-percent="78"></div>
-                    </li>
-                </ul>
-                <ul class="server-stats">
-                    <li>
-                        <span class="txt">CPU</span>
-                        <span class="percent">56</span>
-                        <div id="cpu-sparkline" class="sparkline">Loading...</div>
-                        <div class="pie-chart" data-percent="56"></div>
-                    </li>
-                </ul>
-                <ul class="server-stats">
-                    <li>
-                        <span class="txt">Memory</span>
-                        <span class="percent">14</span>
-                        <div id="ram-sparkline" class="sparkline">Loading...</div>
-                        <div class="pie-chart" data-percent="14"></div>
-                    </li>
-                </ul>
-            </div>
-        </div>
+
         <!-- End .sidebar-panel -->
     </div>
     <!-- End .sidebar-inner -->

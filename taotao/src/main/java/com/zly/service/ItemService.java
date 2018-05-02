@@ -12,4 +12,5 @@ public interface ItemService {
 
     List<Item> getItem(int page, int rows);
     long getItemNum();
+    boolean addItem(Item item);
 }

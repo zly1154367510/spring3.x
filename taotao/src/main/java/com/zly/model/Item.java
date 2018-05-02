@@ -1,16 +1,25 @@
 package com.zly.model;
 
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.validation.constraints.*;
 import java.util.Date;
+import java.util.List;
 
 public class Item {
     private Long id;
 
+    @NotEmpty(message = "标题不能为空")
     private String title;
-
+    @NotEmpty(message = "买点不能为空")
     private String sellPoint;
 
+    @DecimalMin(value = "1",message = "价格不能低于1元")
     private Long price;
 
+    @DecimalMin(value = "1",message = "数量不能低于1个")
     private Integer num;
 
     private String barcode;
@@ -24,6 +33,16 @@ public class Item {
     private Date created;
 
     private Date updated;
+
+    private List<MultipartFile> images;
+
+    public List<MultipartFile> getImages() {
+        return images;
+    }
+
+    public void setImages(List<MultipartFile> images) {
+        this.images = images;
+    }
 
     public Item(Long id, String title, String sellPoint, Long price, Integer num, String barcode, String image, Long cid, Byte status, Date created, Date updated) {
         this.id = id;

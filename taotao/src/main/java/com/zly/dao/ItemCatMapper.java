@@ -17,6 +17,8 @@ public interface ItemCatMapper {
     @Select("select id,parent_id as parentId,name,is_parent as isParent from tb_item_cat where parent_id = #{id}")
     List<ItemCat> isLeatNode(long id);
 
+    @Select("select name from tb_item_cat where parent_id=0")
+    List<String> selectItemCatName();
     int insertSelective(ItemCat record);
 
     ItemCat selectByPrimaryKey(Long id);
