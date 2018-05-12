@@ -60,4 +60,6 @@ logging:
 logging.level.org.springframework : WARN
 logging.level.com.zly.mapper: DEBUG
 logging.file: classpath:log/spring-boot-logging.log
+management.security.enabled: false
+
 

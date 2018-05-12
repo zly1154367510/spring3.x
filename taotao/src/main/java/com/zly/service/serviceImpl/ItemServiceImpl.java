@@ -27,6 +27,11 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    public Item getItemById(Long id){
+        return itemMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
     public long getItemNum() {
         return itemMapper.selectItemNum();
     }
@@ -36,5 +41,10 @@ public class ItemServiceImpl implements ItemService {
         item.setCreated(new Date());
         itemMapper.addItem(item);
         return false;
+    }
+
+    @Override
+    public int delItemById(String id) {
+        return itemMapper.delItemById(id);
     }
 }

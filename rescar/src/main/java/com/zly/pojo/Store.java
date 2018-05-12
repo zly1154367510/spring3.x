@@ -86,7 +86,6 @@ public class Store {
     public String getPhoneNumber() {
         return phoneNumber;
     }
-
     /**
      * @param phoneNumber
      */

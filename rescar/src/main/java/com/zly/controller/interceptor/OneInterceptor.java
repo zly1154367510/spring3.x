@@ -38,6 +38,7 @@ public class OneInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         System.out.println("经过密码验证");
+
         String username = httpServletRequest.getParameter("username");
 //        String username =   httpServletRequest.getHeader("username");;
         String token = httpServletRequest.getParameter("token");

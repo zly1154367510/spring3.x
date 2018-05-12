@@ -1,5 +1,6 @@
 package com.zly.controller;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.zly.mapper.CarMapper;
 import com.zly.service.CarService;
 import com.zly.service.impl.CarServiceImpl;
@@ -27,6 +28,7 @@ public class CarController {
     @GetMapping(value = "car/getCarList/{page}")
     public JsonResult findAllCar(HttpServletResponse response, @PathVariable Integer page) {
        // response.addHeader("Access-Control-Allow-Origin", "*");
+        System.out.println("sssssssssssssssssssssssss");
         return JsonResult.ok(carService.findAllCar(page));
     }
 

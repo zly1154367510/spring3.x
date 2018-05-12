@@ -5,10 +5,10 @@
 
 <generatorConfiguration>
     <!--导入属性配置-->
-    <properties resource="generator.properties"></properties>
+
 
     <!--指定特定数据库的jdbc驱动jar包的位置-->
-    <classPathEntry location="${jdbc.driverLocation}"/>
+    <classPathEntry location="D:\\javaEE\\mysql\\mysql-connector-java-5.1.42-bin.jar"/>
 
     <context id="default" targetRuntime="MyBatis3">
 
@@ -20,10 +20,10 @@
 
         <!--jdbc的数据库连接 -->
         <jdbcConnection
-                driverClass="${jdbc.driverClass}"
-                connectionURL="${jdbc.connectionURL}"
-                userId="${jdbc.userId}"
-                password="${jdbc.password}">
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://localhost:3306/taotao"
+                userId="root"
+                password="">
         </jdbcConnection>
 
 
@@ -67,11 +67,19 @@
         </javaClientGenerator>
 
 
-        <table tableName="tb_item_cat" domainObjectName="itemCat"
+        <table tableName="tb_content" domainObjectName="Content"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
+        <table tableName="tb_content_category" domainObjectName="ContentCategory"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+
+
 
 
     </context>

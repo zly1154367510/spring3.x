@@ -23,11 +23,14 @@
                         <!-- Start .panel -->
                         <div class="panel-heading white-bg">
                             <h4 class="panel-title">Data table</h4>
+                            <h6>一共有${pages}页</h6>
+                            当前在${page}页 可以在→选择跳转页面
                         </div>
                         <div class="panel-body">
                             <table class="table display" id="datatable">
                                 <thead>
                                 <tr>
+                                    <th>选择</th>
                                     <th>名称</th>
                                     <th>宣传语</th>
                                     <th>价格</th>
@@ -39,21 +42,26 @@
                                 </thead>
 
                                 <tbody>
+                                    <form action="/delItemDo">
+                                       <c:forEach items="${list}" var="item">
+                                           <tr>
+                                               <td>
+                                               <input type="checkbox" value="${item.id}" name="itemId"></td>
+                                               <td>${item.title}</td>
+                                               <td>${item.sellPoint}</td>
+                                               <td>${item.price}</td>
+                                               <td>${item.num}</td>
 
-                                   <c:forEach items="${list}" var="item">
-                                       <tr>
-                                           <td>${item.title}</td>
-                                           <td>${item.sellPoint}</td>
-                                           <td>${item.price}</td>
-                                           <td>${item.num}</td>
+                                               <td>${item.created}</td>
+                                               <td>${item.updated}</td>
+                                               <td><a>修改</a><a>删除</a></td><td><a href="http://localhost:8089/addItemParameter?itemId=${item.id}">参数定制</a></td>
+                                           </tr>
+                                       </c:forEach>
 
-                                           <td>${item.created}</td>
-                                           <td>${item.updated}</td>
-                                           <td><a>修改</a><a>删除</a></td>
-                                       </tr>
-                                   </c:forEach>
-
-
+                                    <tr>
+                                        <td><input  class="btn" type="submit" value="删除"></td>
+                                    </tr>
+                                    </form>
                                 </tbody>
 
                                 <tfoot>
@@ -78,19 +86,21 @@
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
-
                             <li>
                                 <a href="http://localhost:8089/item?page=${nextPage}" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
                             <li>
-                                <div class="input-group">
-                                    <form action="http://localhost:8089/item" method="get">
-                                        <input type="text" name="page" class="form-control">
-                                        <input type="submit" value="跳转" class="btn btn-default">
-                                    </form>
-                                <div>
+                                <form action="http://localhost:8089/item" method="get">
+                                    <div class="input-group" width="20%">
+                                        <input type="text" class="form-control" name="page" width="20%" placeholder="Search for...">
+                                        <span class="input-group-btn">
+                                            <input class="btn btn-default" type="submit">跳转</input>
+                                        </span>
+                                    </div>
+                                </form>
+
                             </li>
                         </ul>
                     </nav>

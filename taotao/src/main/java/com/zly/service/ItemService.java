@@ -13,4 +13,6 @@ public interface ItemService {
     List<Item> getItem(int page, int rows);
     long getItemNum();
     boolean addItem(Item item);
+    Item getItemById(Long id);
+    int delItemById(String id);
 }

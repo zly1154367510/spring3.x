@@ -63,7 +63,7 @@ public class UserController {
 
     @RequestMapping("login/loginUser")
     public JsonResult login(@RequestBody String userMassage,HttpServletRequest request){
-        Cookie[] cookies = request.getCookies();
+
 
         JSONObject jsonObject = JSONObject.fromObject(userMassage);
         String username = jsonObject.getString("username");
@@ -82,28 +82,28 @@ public class UserController {
 
     }
 
-    @RequestMapping("check/authCode")
-    private  @ResponseBody byte[] getAutoCode( HttpServletRequest request, HttpServletResponse response){
-
-        String uuid = UUID.randomUUID().toString();
-        Captcha captcha = new Captcha.Builder(captchaW, captchaH)
-                .addText().addBackground(new GradiatedBackgroundProducer())
-                .gimp(new FishEyeGimpyRenderer())
-                .build();
-
-        //tokenService.createAuthCode(uuid,captcha.getAnswer());
-
-
-        ByteArrayOutputStream bao = new ByteArrayOutputStream();
-        try {
-            ImageIO.write(captcha.getImage(), "png", bao);
-
-            return bao.toByteArray();
-        }catch (IOException e){
-            return null;
-        }
-
-    }
+//    @RequestMapping("check/authCode")
+//    private  @ResponseBody byte[] getAutoCode( HttpServletRequest request, HttpServletResponse response){
+//
+//        String uuid = UUID.randomUUID().toString();
+//        Captcha captcha = new Captcha.Builder(captchaW, captchaH)
+//                .addText().addBackground(new GradiatedBackgroundProducer())
+//                .gimp(new FishEyeGimpyRenderer())
+//                .build();
+//
+//        //tokenService.createAuthCode(uuid,captcha.getAnswer());
+//
+//
+//        ByteArrayOutputStream bao = new ByteArrayOutputStream();
+//        try {
+//            ImageIO.write(captcha.getImage(), "png", bao);
+//
+//            return bao.toByteArray();
+//        }catch (IOException e){
+//            return null;
+//        }
+//
+//    }
 
     /**
      * 生成验证码

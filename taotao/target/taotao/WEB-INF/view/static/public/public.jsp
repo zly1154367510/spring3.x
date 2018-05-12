@@ -132,79 +132,20 @@
                     </button>
                 </form>
             </li>
-            <li><a href="http://localhost:8089/item?page=1">手机列表 <i class="im-screen"></i></a>
+            <li>
+                产品管理 <i class="im-paragraph-justify"></i>
             </li>
-            <li><a href="http://localhost:8089/additem">添加商品 <i class="st-chart"></i></a>
+            <li><a href="http://localhost:8089/item?page=1">产品列表 <i class="glyphicon glyphicon-th-list"></i></a>
+            </li>
+            <li><a href="http://localhost:8089/additem">添加商品 <i class="glyphicon glyphicon-plus"></i></a>
             </li>
             <li>
-                <a href="#"> Forms <i class="im-paragraph-justify"></i></a>
-                <ul class="nav sub">
-                    <li><a href="forms.html"><i class="ec-pencil2"></i> Form Stuff</a>
-                    </li>
-                    <li><a href="form-validation.html"><i class="im-checkbox-checked"></i> Form Validation</a>
-                    </li>
-                    <li><a href="form-wizard.html"><i class="im-wand"></i> Form Wizard</a>
-                    </li>
-                    <li><a href="wysiwyg.html"><i class="fa-pencil"></i> WYSIWYG editor</a>
-                    </li>
-                </ul>
+                 首页广告管理 <i class="im-paragraph-justify"></i>
             </li>
-            <li><a href="#"> Tables <i class="im-table2"></i></a>
-                <ul class="nav sub">
-                    <li><a href="tables.html"><i class="en-arrow-right7"></i> Static tables</a>
-                    </li>
-                    <li><a href="data-tables.html"><i class="en-arrow-right7"></i> Data tables</a>
-                    </li>
-                </ul>
+            <li><a href="http://localhost:8089/adv">广告列表 <i class="glyphicon glyphicon-th-list"></i></a>
+            <li><a href="http://localhost:8089/addAdv">添加广告 <i class="glyphicon glyphicon-plus"></i></a>
             </li>
-            <li><a href="#"> UI Elements <i class="st-lab"></i></a>
-                <ul class="nav sub">
-                    <li><a href="notifications.html"><i class="fa-bell"></i> Notifications</a>
-                    </li>
-                    <li><a href="panels.html"><i class="br-window"></i> Panels</a>
-                    </li>
-                    <li><a href="tiles.html"><i class="im-windows8"></i> Tiles</a>
-                    </li>
-                    <li><a href="elements.html"><i class="st-cube"></i> Elements</a>
-                    </li>
-                    <li><a href="icons.html"><i class="im-stack"></i> Icons</a>
-                    </li>
-                    <li><a href="buttons.html"><i class="im-play2"></i> Buttons</a>
-                    </li>
-                    <li><a href="calendar.html"><i class="im-calendar2"></i> Calendar</a>
-                    </li>
-                    <li><a href="grid.html"><i class="st-grid"></i> Grid</a>
-                    </li>
-                    <li><a href="typo.html"><i class="im-font"></i> Typography</a>
-                    </li>
-                    <li><a href="list.html"><i class="fa-list"></i> Lists</a>
-                    </li>
-                </ul>
-            </li>
-            <li><a href="#"><i class="ec-mail"></i> Email app</a>
-                <ul class="nav sub">
-                    <li><a href="email-inbox.html"><i class="ec-archive"></i> Inbox</a>
-                    </li>
-                    <li><a href="email-read.html"><i class="br-eye"></i> Read email</a>
-                    </li>
-                    <li><a href="email-write.html"><i class="ec-pencil2"></i> Write email</a>
-                    </li>
-                </ul>
-            </li>
-            <li><a href="file.html"><i class="en-upload"></i> File Manager</a>
-            </li>
-            <li><a href="gallery.html"><i class="im-images"></i> Gallery</a>
-            </li>
-            <li><a href="widgets.html"><i class="st-diamond"></i> Widgets </a>
-            </li>
-            <li><a href="#"><i class="ec-location"></i> Maps</a>
-                <ul class="nav sub">
-                    <li><a href="maps-google.html"><i class="im-map2"></i> Google maps</a>
-                    </li>
-                    <li><a href="maps-vector.html"><i class="en-location2"></i> Vector maps</a>
-                    </li>
-                </ul>
-            </li>
+
 
 
         </ul>

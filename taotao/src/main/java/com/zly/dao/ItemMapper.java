@@ -1,6 +1,7 @@
 package com.zly.dao;
 
 import com.zly.model.Item;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Select;
@@ -16,11 +17,12 @@ public interface ItemMapper {
 
     int insertSelective(Item record);
 
+    @Select("select * from tb_item where id =#{id}")
     Item selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(Item record);
 
-    @Select("select title,sell_point as sellPoint,price,num,created,updated from tb_item")
+    @Select("select id,title,sell_point as sellPoint,price,num,created,updated from tb_item")
     List<Item> selectItem();
 
     @Select("select count(*) from tb_item")
@@ -30,6 +32,9 @@ public interface ItemMapper {
     void addItem(Item item);
 
     int updateByPrimaryKey(Item record);
+
+    @Delete("delete from tb_item where id = #{id}")
+    int delItemById(String id);
 
     class sqlFactory{
         public String addItem(Item item){

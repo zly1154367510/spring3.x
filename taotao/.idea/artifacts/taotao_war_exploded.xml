@@ -52,9 +52,6 @@
           <element id="library" level="project" name="Maven: com.alibaba:druid:1.1.6" />
           <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper:4.1.6" />
           <element id="library" level="project" name="Maven: com.github.jsqlparser:jsqlparser:0.9.6" />
-          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:unknown" />
-          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:unknown" />
-          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:unknown" />
           <element id="library" level="project" name="Maven: javax.validation:validation-api:1.0.CR5" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-validator:4.0.0.CR1" />
           <element id="library" level="project" name="Maven: javax.xml.bind:jaxb-api:2.1" />
